@@ -2,8 +2,12 @@ version: '3'
 
 services:
   app:
-    image: mreddy3/rescueme:1.0
+    build: .
     env_file:
       - .env
     ports:
-      - 8080:8080
+      - 8080:80
+    depends_on:
+      - mongo
+  mongo:
+    image: "mongo"
