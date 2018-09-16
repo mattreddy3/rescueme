@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-console.log(process.env.ENV_TEST)
+
+
 class App extends Component {
   render() {
     return (
