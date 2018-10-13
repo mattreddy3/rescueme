@@ -4,31 +4,30 @@
  i.e. most controls within SideNav, HeaderBar, etc.
  Exporting all as named.
 */
-import React from 'react';
-import styled,{css} from 'styled-components';
-import theme from '../styles/themes';
-import {media} from '../styles/utils';
-import RawDatePicker from 'react-datepicker';
-import Creatable from 'react-select/lib/Creatable';
-import RawSelect from 'react-select';
+import styled,{css} from 'styled-components'
+import theme from '../styles/themes'
+import {media} from '../styles/utils'
+import RawDatePicker from 'react-datepicker'
+import Creatable from 'react-select/lib/Creatable'
+import RawSelect from 'react-select'
 import {
-  Modal, 
-  Tabs as RawTabs, 
-  Tab, 
-  Tooltip, 
-  OverlayTrigger, 
-  Grid, 
-  Row, 
-  Col, 
-  Form,
-  Nav, 
-  FormGroup as RawFormGroup,
-  FormControl,
-  ControlLabel,
-  NavItem,
-  Well as RawWell,
-  Badge as RawBadge
-} from 'react-bootstrap';
+	Modal, 
+	Tabs as RawTabs, 
+	Tab, 
+	Tooltip, 
+	OverlayTrigger, 
+	Grid, 
+	Row, 
+	Col, 
+	Form,
+	Nav, 
+	FormGroup as RawFormGroup,
+	FormControl,
+	ControlLabel,
+	NavItem,
+	Well as RawWell,
+	Badge as RawBadge
+} from 'react-bootstrap'
 
 
 export const Button = styled.button`
@@ -41,36 +40,36 @@ export const Button = styled.button`
   color:${props => props.textColor || 'black'};
   font-family:inherit;
   cursor:${props => props.disabled ? 'not-allowed !important' : 'pointer'};
-`;
+`
 
 export const Icon = styled.i.attrs({
-  className: (props => {
-    let classString = 'fa fa-fw fa-' + props.icon
-    if(props.spin){classString+=' fa-spin'}
-    if(props.pulse){classString+=' fa-pulse'}
-    return classString
-  })
+	className: (props => {
+		let classString = 'fa fa-fw fa-' + props.icon
+		if(props.spin){classString+=' fa-spin'}
+		if(props.pulse){classString+=' fa-pulse'}
+		return classString
+	})
 })`
   font-size:${props => props.size || 'inherit'};
   color:${props => props.color || 'inherit'};
-`;
+`
 
 export const IconWithOverlay = (props) => {
-  let tooltip = <Tooltip id={props.id}>{props.tooltip}</Tooltip>
-  return(
-    <OverlayTrigger delayShow={props.delayShow || 200} overlay={tooltip} placement={props.placement || 'right'}>
-      <Icon {...props}/>
-    </OverlayTrigger>
-  )
+	let tooltip = <Tooltip id={props.id}>{props.tooltip}</Tooltip>
+	return(
+		<OverlayTrigger delayShow={props.delayShow || 200} overlay={tooltip} placement={props.placement || 'right'}>
+			<Icon {...props}/>
+		</OverlayTrigger>
+	)
 }
 
 const FormGroup = styled(RawFormGroup)`
-`;
+`
 
 const Badge = styled(RawBadge)`
   background-color: ${props => props.color || theme.fontColor};
   color:${props => props.textColor || 'white'};
-`;
+`
 // Input styling
 const inputStyle = css`
   font-size:1em;
@@ -92,26 +91,26 @@ const inputStyle = css`
   &:-moz-placeholder { /* Firefox 18- */
     color: #aaa;
   }
-`;
+`
 
 const StyledInput = styled.input`
 border-style:solid;
   padding: 0px 10px 0px 10px;
   ${inputStyle}
   height:36px;
-`;
+`
 
 export const FlexDiv = styled.div`
   display:flex;
   justify-content: ${props=>props.justifyContent ? props.justifyContent : 'inherit'};
   align-items: ${props=>props.alignItems ? props.alignItems : 'inherit'};
   flex-direction: ${props=>props.flexDirection ? props.flexDirection : 'inherit'};
-`;
+`
 
 export const Input = (props) => (
-  <FlexDiv justifyContent={props.justifyContent}>
-    <StyledInput {...props}/>
-  </FlexDiv>
+	<FlexDiv justifyContent={props.justifyContent}>
+		<StyledInput {...props}/>
+	</FlexDiv>
 )
 
 export const DatePicker = styled(RawDatePicker)`
@@ -119,34 +118,34 @@ border-style:solid;
   height:36px;
   padding: 0px 10px 0px 10px;
   ${inputStyle}
-`;
+`
 
 const StyledSelect = styled(RawSelect)`
   ${inputStyle}
   display:inline-block;
   min-width:168px;
-`;
+`
 export const Select = (props) => (
-  <FlexDiv>
-    <StyledSelect {...props}/>
-  </FlexDiv>
+	<FlexDiv>
+		<StyledSelect {...props}/>
+	</FlexDiv>
 )
 
 const StyledCreateableSelect = styled(Creatable)`
   ${inputStyle}
   display:inline-block;
   min-width:168px;
-`;
+`
 
 export const CreateableSelect = (props) => (
-  <FlexDiv>
-    <StyledCreateableSelect {...props}/>
-  </FlexDiv>
+	<FlexDiv>
+		<StyledCreateableSelect {...props}/>
+	</FlexDiv>
 )
 
 export const ColorSpan = styled.span`
   color:${props => props.color };
-`;
+`
 
 const ActionBar = styled.div`
   display:flex;
@@ -154,82 +153,82 @@ const ActionBar = styled.div`
   height:auto;
   justify-content: ${props => props.pushright ? 'flex-end' : 'space-between'};
   padding:0 .9em;
-  `;
-  const Tabs = styled(RawTabs)`
+  `
+const Tabs = styled(RawTabs)`
   .nav{
     margin-bottom:1em;
   }
-  `;
+  `
   
 const FormInputRow = (props) => {
   
-  return (
-    <Row>
-      <Col componentClass={ControlLabel} htmlFor={props.id} xs={props.labelXs||12} md={props.labelMd||2}>
-         {props.label}
-      </Col>
-     <Col xs={props.inputXs||12} md={props.inputMd||10}>
-        <Input
-          {...props}
-          name={props.id}
-          type={props.type || 'text'}
-          placeholder={props.placeholder || 'Enter text'}
-        />
-      </Col>
-    </Row>
-  )
+	return (
+		<Row>
+			<Col componentClass={ControlLabel} htmlFor={props.id} xs={props.labelXs||12} md={props.labelMd||2}>
+				{props.label}
+			</Col>
+			<Col xs={props.inputXs||12} md={props.inputMd||10}>
+				<Input
+					{...props}
+					name={props.id}
+					type={props.type || 'text'}
+					placeholder={props.placeholder || 'Enter text'}
+				/>
+			</Col>
+		</Row>
+	)
 }
 export const FormDateRow = (props) => {
-  let labelXs = 12
-  let inputXs = 12
-  let labelMd = 2
-  let inputMd = 10
-  if(props.fullRow){
-    labelMd = 12
-    inputMd = 12
-  }
-  return (
-    <Row>
-    <Col componentClass={ControlLabel} htmlFor={props.id} xs={labelXs} md={labelMd}>
-        {props.label}
-    </Col>
-    <Col xs={inputXs} md={inputMd}>
-      <DatePicker
-        {...props}  
-        placeholderText={props.placeholderText || "MM/DD/YYYY"}
-        name={props.id}
-        />
-    </Col>
-  </Row>
-  )
+	let labelXs = 12
+	let inputXs = 12
+	let labelMd = 2
+	let inputMd = 10
+	if(props.fullRow){
+		labelMd = 12
+		inputMd = 12
+	}
+	return (
+		<Row>
+			<Col componentClass={ControlLabel} htmlFor={props.id} xs={labelXs} md={labelMd}>
+				{props.label}
+			</Col>
+			<Col xs={inputXs} md={inputMd}>
+				<DatePicker
+					{...props}  
+					placeholderText={props.placeholderText || 'MM/DD/YYYY'}
+					name={props.id}
+				/>
+			</Col>
+		</Row>
+	)
 }
 export const FormSelectRow = (props) => {
-  let RenderedSelect = Select;
-  if(props.createable){
-    RenderedSelect = CreateableSelect;
-  }
-  return (
-    <Row>
-      <Col xs={props.labelXs||12} componentClass={ControlLabel} htmlFor={props.id} md={props.labelMd||2}>
-          {props.label}
-      </Col>
-      <Col xs={props.inputXs||12} md={props.inputMd||10}>
-        <RenderedSelect
-          {...props}
-          name={props.id}
-          labelKey={props.labelKey || 'description'}
-          valueKey={props.valueKey || 'id'}
-          placeholder={props.placeholder || 'Select value'}
+	let RenderedSelect = Select
+	if(props.createable){
+		RenderedSelect = CreateableSelect
+	}
+	return (
+		<Row>
+			<Col xs={props.labelXs||12} componentClass={ControlLabel} htmlFor={props.id} md={props.labelMd||2}>
+				{props.label}
+			</Col>
+			<Col xs={props.inputXs||12} md={props.inputMd||10}>
+				<RenderedSelect
+					{...props}
+					name={props.id}
+					labelKey={props.labelKey || 'description'}
+					valueKey={props.valueKey || 'id'}
+					placeholder={props.placeholder || 'Select value'}
 
-          />
-      </Col>
-    </Row>
-  )
+				/>
+			</Col>
+		</Row>
+	)
 }
 const Well = styled(RawWell)`
   margin-right:1em;
   margin-left:1em;
-`;
+`
 export const NavUl = styled.ul`
   width:100%;
   min-width:${props => props.collapsed ? 'inherit' : '140px'};
@@ -270,6 +269,6 @@ export const NavUl = styled.ul`
     }
 
   `}
-`;
+`
 
-export {Badge,Well, Form, FormInputRow, FormGroup, ControlLabel, FormControl, Tabs, Tab, ActionBar, Modal, Tooltip, OverlayTrigger, Grid, Row, Col, Nav, NavItem};
+export {Badge,Well, Form, FormInputRow, FormGroup, ControlLabel, FormControl, Tabs, Tab, ActionBar, Modal, Tooltip, OverlayTrigger, Grid, Row, Col, Nav, NavItem}

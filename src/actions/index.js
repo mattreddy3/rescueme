@@ -1,34 +1,44 @@
-import {FETCH_TEXTURES, TEXTURES_LOADING, TEXTURES_LOADED, TEXTURES_LOADING_FAILED} from './constants';
+import { _LOADING, _LOADED, _LOADING_FAILED, FETCH_, DATA, dataTypes } from './constants'
 // ACTION CREATORS
-
+const isValidDataType = (dataType) => {
+	return dataTypes.hasOwnProperty(dataType)
+}
 /**
  * 
  * @param {number} id 
  */
-export function fetchTextures(id){
-    return {
-        type:FETCH_TEXTURES,
-        payload:id 
-    }
+export function fetchData(dataType = DATA, options = {}){
+	if (!isValidDataType(dataType)) return 'Not valid data type'
+	return {
+		type: FETCH_ + dataType,
+		payload:{
+			options
+		}
+	}
 }
 
-export function texturesLoading(loading){
-    return {
-        type: TEXTURES_LOADING,
-        payload: loading
-    }
+export function dataLoading(dataType = DATA, loading){
+	if (!isValidDataType(dataType)) return 'Not valid data type'
+	return {
+		type: dataType + _LOADING,
+		payload: loading
+	}
 }
 
-export function texturesLoaded(textures){
-    return{
-        type: TEXTURES_LOADED,
-        payload: textures
-    }
+export function dataLoaded(dataType, data){
+	if (!isValidDataType(dataType)) return 'Not valid data type'
+	return{
+		type: dataType + _LOADED,
+		payload: data,
+		meta: {
+		}
+	}
 }
 
-export function texturesLoadingFailed(message){
-    return{
-        type:TEXTURES_LOADING_FAILED,
-        payload:message
-    }
+export function dataLoadingFailed(dataType, message){
+	if (!isValidDataType(dataType)) return 'Not valid data type'
+	return{
+		type:dataType + _LOADING_FAILED,
+		payload:message
+	}
 }

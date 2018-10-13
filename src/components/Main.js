@@ -1,37 +1,34 @@
 import React, {Component} from 'react';
-import Header from './Header';
-import Content from './Content';
+// import Header from './Header';
+// import Content from './Content';
+import {ANIMALS} from '../actions/constants'
 
 class Main extends Component {
     state = {
       response:""
     }
     componentDidMount() {
-      this.callApi()
-        .then(res=>this.setState({response:res.express}))
-        .catch(err=>console.log(err));
-    }
-    callApi = async() => {
-      const response = await fetch(`/api/hello`);
-      try{
-        const body = await response.json();
-        if(response.status !== 200) throw Error(body.message);
-    
-        return body;
-      }catch(e){
-        console.log(response);
-        return {express: "Couldn't reach the server"}
-      }
+      this.props.fetchData(ANIMALS)
     }
     render() {
+      let { animals } = this.props.app
       return (
         <div className="App">
           <header className="App-header">
-            <h1 className="App-title">Bienvenidos a RescueMe</h1>
+            <h1 className="App-title">PANDA WATCH</h1>
           </header>
-          <p className="App-intro">
-            {this.state.response}
-          </p>
+          <ul className="App-intro">
+            {animals.list.length > 0 ? animals.list.map((animal) => {
+              return(
+                <li>
+                  <img src={animal.image}></img>
+                  <p>{animal.name}- {animal.color} {animal.species}</p>
+                </li>
+              )
+            })
+            : <li>No animals loaded</li>
+            }
+          </ul>
           
         </div>
       );

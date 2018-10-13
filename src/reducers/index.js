@@ -4,9 +4,9 @@ import { combineReducers } from 'redux';
 // import session from './session';
 // import ui from './ui';
 // import nav from './nav';
-import textures from './textures';
+import animals from './animals';
 
 const rootReducer = combineReducers({
-  textures
+  animals
 });
 export default rootReducer;
