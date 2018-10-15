@@ -10,6 +10,8 @@ import {media} from '../styles/utils'
 import RawDatePicker from 'react-datepicker'
 import Creatable from 'react-select/lib/Creatable'
 import RawSelect from 'react-select'
+import React from 'react'
+
 import {
 	Modal, 
 	Tabs as RawTabs, 
@@ -26,7 +28,8 @@ import {
 	ControlLabel,
 	NavItem,
 	Well as RawWell,
-	Badge as RawBadge
+  Badge as RawBadge,
+  Carousel as Carousel
 } from 'react-bootstrap'
 
 
@@ -271,4 +274,4 @@ export const NavUl = styled.ul`
   `}
 `
 
-export {Badge,Well, Form, FormInputRow, FormGroup, ControlLabel, FormControl, Tabs, Tab, ActionBar, Modal, Tooltip, OverlayTrigger, Grid, Row, Col, Nav, NavItem}
+export {Carousel, Badge, Well, Form, FormInputRow, FormGroup, ControlLabel, FormControl, Tabs, Tab, ActionBar, Modal, Tooltip, OverlayTrigger, Grid, Row, Col, Nav, NavItem}

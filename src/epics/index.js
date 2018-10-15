@@ -1,9 +1,11 @@
 import { concat } from 'rxjs'
 import { combineEpics, ActionsObservable } from 'redux-observable'
 import { FETCH_, dataTypes } from '../actions/constants'
-import { dataLoading, dataLoadingFailed } from '../actions'
-import { switchMap } from 'rxjs/operators'
+import { dataLoading, dataLoadingFailed, getMockData, dataLoaded } from '../actions'
+import { mergeMap, switchMap, catchError } from 'rxjs/operators'
 import { nullFilter, dataLoadedSwitchMap } from '../utils/rxOperators'
+const env = process.env.NODE_ENV
+const isDev = env === 'development'
 
 const rootUrl = '/api'
 const query = (object) => `${rootUrl}/${encodeURIComponent(object)}`
@@ -14,16 +16,21 @@ export function fetchEpic(action$, store, {ajax}){
 			const dataObject = type.split('_').reverse()[0] // for FETCH_ actions, data object is last
 			const loading = ActionsObservable.of(dataLoading(dataObject, true))
 			const request = ajax.getJSON(query(dataObject.toLowerCase())).pipe(
-				nullFilter, // want to do something other than end the stream here... Fire an "unsuccessful" action?
-				dataLoadedSwitchMap(dataObject)
+				nullFilter,
+				dataLoadedSwitchMap(dataObject),
+				catchError(e => ActionsObservable.of(dataLoadingFailed(dataObject, e)))
 			)
-				// .catch(err => {
-				// 	// let message = err.response.errorMessage
-				// 	return ActionsObservable.of(dataLoadingFailed(err))
-				// })
-
+			const testRequest = ActionsObservable.of(getMockData(dataObject)).pipe(
+				switchMap(res => ActionsObservable.of(dataLoaded(dataObject, res.payload)))
+			)
 			const doneLoading = ActionsObservable.of(dataLoading(dataObject, false))
-              
+			if(isDev){
+				return concat(
+					loading,
+					testRequest,
+					doneLoading
+				)
+			}
 			return concat(
 				loading,
 				request,

@@ -3,6 +3,9 @@ ul {
 }
 .App {
   text-align: center;
+  flex-flow: row wrap;
+  display: flex;
+  height:100%;
 }
 
 .App-logo {
@@ -23,6 +26,15 @@ ul {
 
 .App-intro {
   font-size: large;
+}
+
+.carouselImage {
+  display:flex;
+  height:400px !important;
+}
+
+.customCarousel {
+  width:100% !important;
 }
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }

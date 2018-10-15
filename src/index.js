@@ -12,6 +12,7 @@ import { Provider } from 'react-redux'
 import store, {history} from './configureStore'
 import { withRouter, Router } from 'react-router-dom'
 // import { ConnectedRouter as Router } from 'react-router-redux'
+const env = process.env.NODE_ENV
 
 const AppWithRouter = withRouter(App);
 

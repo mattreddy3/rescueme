@@ -12,7 +12,7 @@ const {texts} = i18n;
 class Header extends Component{
     render(){
         return(
-            <HeaderBar title={texts.appTitle} image={mattheadshot}/>
+            <HeaderBar title='PANDA WATCH'/>
         )
     }
 }

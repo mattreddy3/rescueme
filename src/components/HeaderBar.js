@@ -43,14 +43,13 @@ class HeaderBar extends Component{
       return (
           <Container>
             <LeftContainer>
-              <img src={image} className="App-logo" alt="logo" />
             </LeftContainer>
             <RightContainer>
-              <h1>{title}</h1>
+            <h1>{title}</h1>
             </RightContainer>
           </Container>
       )
   }
 }
 
-export default HeaderBar;
+export default HeaderBar

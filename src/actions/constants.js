@@ -11,6 +11,7 @@ export const UPDATE_ = 'UPDATE_'
 export const CLEAR_CURRENT_ = 'CLEAR_CURRENT_'
 export const ASSIGN_ = 'ASSIGN_'
 export const UNASSIGN_ = 'UNASSIGN_'
+export const GET_MOCK_ = 'GET_MOCK_'
 
 // Data types 
 export const ANIMALS = 'ANIMALS' // 
