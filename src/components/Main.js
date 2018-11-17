@@ -5,7 +5,7 @@ import theme from '../styles/themes'
 import styled from 'styled-components'
 import { Route, Switch, Redirect } from 'react-router-dom'
 import {ANIMALS, TOGGLE_SIDENAV} from '../actions/constants'
-import {Icon } from '../controls'
+import {Icon, Button } from '../controls'
 import CarouselList from './CarouselList'
 import Header from './Header'
 const AuthRoute = ({component:Component, ...props}) =>
@@ -40,17 +40,28 @@ class Main extends Component {
     render() {
       let { animals } = this.props.app
       return (
-        <div className="App">
-          <Header/>
-          <div>
+        <div className="container">
+          <Header />
+          <div className="content">
           {animals.loading ? <Icon pulse={true} icon="spinner"/>
           :animals.list.length > 0 ? 
-            <CarouselList 
+            <CarouselList
               items={animals.list}
               >
             </CarouselList>
             : <p>Couldn't load anything</p>}
+          </div>
+          <div className="footer">
+            <div className="labelButton">
+              Option 1
             </div>
+            <div className="labelButton">
+              Option 2
+            </div>
+            <div className="labelButton">
+              Option 3
+            </div>
+          </div>
         </div>
       );
     }

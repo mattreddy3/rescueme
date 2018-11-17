@@ -17,11 +17,9 @@ const Container = styled.div`
   border-bottom: 1px solid ${theme.inputBorder};
   color:${theme.fontColor};
   padding:0em 0em 0em 0em;
-  margin: auto;
-  height: ${props => props.height ? props.height : '4em'};
+  height: ${props => props.height ? props.height : '6em'};
   width: 100%;
   position:relative;
-  flex: 1 100%;
 `;
 
 const LeftContainer = styled.div`
@@ -39,9 +37,9 @@ class HeaderBar extends Component{
     super(props)
   }
   render(){
-      let {title, image} = this.props
+      let {title, image, barHeight} = this.props
       return (
-          <Container>
+          <Container height={barHeight}>
             <LeftContainer>
             </LeftContainer>
             <RightContainer>

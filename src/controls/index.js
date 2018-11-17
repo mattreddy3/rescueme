@@ -38,11 +38,16 @@ export const Button = styled.button`
   margin: ${props => props.margin || '.5em'};
   padding: 0.25em .65em;
   border: 2px solid ${props => props.color || theme.secondaryColor};
-  border-radius: 4px;
+  border-radius: ${props => props.borderRadius || '4px'};
   background-color: ${props => props.color || theme.secondaryColor};
   color:${props => props.textColor || 'black'};
   font-family:inherit;
   cursor:${props => props.disabled ? 'not-allowed !important' : 'pointer'};
+
+  :focus{
+    outline: none;
+    background: rgba(0,0,0,0.05);
+  }
 `
 
 export const Icon = styled.i.attrs({

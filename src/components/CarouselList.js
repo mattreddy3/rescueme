@@ -18,6 +18,7 @@ class CarouselList extends Component{
         const { items = [] } = this.props
         return(
             <Carousel 
+                className="customcarousel"
                 activeIndex={index}
                 direction={direction}
                 onSelect={this.handleSelect}>
