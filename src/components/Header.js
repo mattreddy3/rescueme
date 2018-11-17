@@ -9,12 +9,6 @@ import HeaderBar from './HeaderBar';
 const {texts} = i18n;
 
 
-class Header extends Component{
-    render(){
-        return(
-            <HeaderBar title={texts.appTitle} image={mattheadshot}/>
-        )
-    }
-}
+ const Header = (props) => <HeaderBar {...props} title='PANDA WATCH'/>
 
 export default Header;

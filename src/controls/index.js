@@ -10,6 +10,8 @@ import {media} from '../styles/utils'
 import RawDatePicker from 'react-datepicker'
 import Creatable from 'react-select/lib/Creatable'
 import RawSelect from 'react-select'
+import React from 'react'
+
 import {
 	Modal, 
 	Tabs as RawTabs, 
@@ -26,7 +28,8 @@ import {
 	ControlLabel,
 	NavItem,
 	Well as RawWell,
-	Badge as RawBadge
+  Badge as RawBadge,
+  Carousel as Carousel
 } from 'react-bootstrap'
 
 
@@ -35,11 +38,16 @@ export const Button = styled.button`
   margin: ${props => props.margin || '.5em'};
   padding: 0.25em .65em;
   border: 2px solid ${props => props.color || theme.secondaryColor};
-  border-radius: 4px;
+  border-radius: ${props => props.borderRadius || '4px'};
   background-color: ${props => props.color || theme.secondaryColor};
   color:${props => props.textColor || 'black'};
   font-family:inherit;
   cursor:${props => props.disabled ? 'not-allowed !important' : 'pointer'};
+
+  :focus{
+    outline: none;
+    background: rgba(0,0,0,0.05);
+  }
 `
 
 export const Icon = styled.i.attrs({
@@ -271,4 +279,4 @@ export const NavUl = styled.ul`
   `}
 `
 
-export {Badge,Well, Form, FormInputRow, FormGroup, ControlLabel, FormControl, Tabs, Tab, ActionBar, Modal, Tooltip, OverlayTrigger, Grid, Row, Col, Nav, NavItem}
+export {Carousel, Badge, Well, Form, FormInputRow, FormGroup, ControlLabel, FormControl, Tabs, Tab, ActionBar, Modal, Tooltip, OverlayTrigger, Grid, Row, Col, Nav, NavItem}
