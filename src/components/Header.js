@@ -9,6 +9,6 @@ import HeaderBar from './HeaderBar';
 const {texts} = i18n;
 
 
- const Header = (props) => <HeaderBar {...props} title='PANDA WATCH'/>
+ const Header = (props) => <HeaderBar {...props} title='Gatalunya Tracker'/>
 
 export default Header;

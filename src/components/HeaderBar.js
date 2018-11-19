@@ -32,6 +32,19 @@ const RightContainer = styled.div`
   margin-left: .5em;
 `;
 
+const Div = styled.div`
+  display:flex;
+  margin:auto;
+`
+
+const UserBox = (props) => {
+  return (
+    <Div>
+      <Icon size="3.5rem" icon="user"/>
+    </Div>
+  )
+}
+
 class HeaderBar extends Component{
   constructor(props){
     super(props)
@@ -41,9 +54,10 @@ class HeaderBar extends Component{
       return (
           <Container height={barHeight}>
             <LeftContainer>
+              <h1>{title}</h1>
             </LeftContainer>
             <RightContainer>
-            <h1>{title}</h1>
+              <UserBox />
             </RightContainer>
           </Container>
       )
