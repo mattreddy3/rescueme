@@ -34,7 +34,7 @@ class Footer extends Component{
   static PropTypes = {
 
   }
-  state = { currentButton:2 }
+  state = { currentButton:1 }
   selectButton = (i) => {
     const that = this;
     return () => {
@@ -45,19 +45,21 @@ class Footer extends Component{
 
     }
   }
+  isButtonSelected = (i) => {
+    return this.state.currentButton == i
+  }
   render () {
-
+    let {nav} = this.props
     return (
       <FooterContainer>
-        <MenuButton key={0} onClick={this.selectButton(0)} selected={this.state.currentButton === 0}>
-          Option 1
-        </MenuButton>
-        <MenuButton key={1} onClick={this.selectButton(1)} selected={this.state.currentButton === 1}>
-          Option 2
-        </MenuButton>
-        <MenuButton key={2} onClick={this.selectButton(2)} selected={this.state.currentButton === 2}>
-          Option 3
-        </MenuButton>
+        {nav && Object.keys(nav.appOptions).map((i) => {
+          const obj = nav.appOptions[i]
+          return(<MenuButton key={i} onClick={this.selectButton(i)} selected={this.isButtonSelected(i)}>
+            {obj.title}
+          </MenuButton>)
+        })
+
+        }
       </FooterContainer>
     )
   }

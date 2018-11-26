@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux';
 
 // import tests from './tests';
-// import session from './session';
+import session from './session';
 // import ui from './ui';
-// import nav from './nav';
+import nav from './nav';
 import animals from './animals';
 
 const rootReducer = combineReducers({
-  animals
+  animals,
+  nav,
+  session
 });
 export default rootReducer;

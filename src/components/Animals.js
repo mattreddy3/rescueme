@@ -37,7 +37,7 @@ const ProfileInfo = ({item}) => {
     </Info>
   )
 }
-class Content extends Component{
+class Animals extends Component{
     state = initialState
     componentWillMount = ( ) => {
         //TODO: add call for textures using this.props.fetchTextures()
@@ -113,4 +113,4 @@ const mapDispatch = (dispatch) => {
     return bindActionCreators(actionCreators, dispatch)
 }
 
-export default connect(mapState, mapDispatch)(Content)
+export default connect(mapState, mapDispatch)(Animals)

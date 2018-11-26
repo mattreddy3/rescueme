@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
 // import Header from './Header';
-// import Content from './Content';
+import Animals from './Animals';
 import theme from '../styles/themes'
 import styled from 'styled-components'
 import { Route, Switch, Redirect } from 'react-router-dom'
 import {ANIMALS, TOGGLE_SIDENAV} from '../actions/constants'
 import {Icon, Button } from '../controls'
-import CarouselList from './CarouselList'
 import Header from './Header'
 import Footer from './Footer'
-const AuthRoute = ({component:Component, ...props}) =>
-{
+import NotFound from './NotFound'
+import Login from './Login'
+const AuthRoute = ({component:Component, ...props}) => {
   let {isAuthenticated} = props.session
   return (
     <Route {...props} render={(props)=>(
@@ -23,7 +23,7 @@ const AuthRoute = ({component:Component, ...props}) =>
     )}/>
   )
 }
-const Content = styled.main`
+const ContentContainer = styled.main`
   flex: 1 1 auto;
   display:flex;
   justify-content:center;
@@ -37,14 +37,21 @@ class Main extends Component {
       this.props.fetchData(ANIMALS)
     }
     render() {
-      let { animals } = this.props.app
+      let { animals, nav, session } = this.props.app
       return (
         <div className="container">
           <Header />
-          <Content>
-            
-          </Content>
-          <Footer />
+          <ContentContainer>
+            <Switch>
+              {Object.keys(nav.appOptions).map((i) => {
+                let navItem = nav.appOptions[i]
+                return (<AuthRoute session={session} key={navItem.url} exact={navItem.url==='/'} path={navItem.url} component={navItem.component}/>)
+              })}
+              <Route path="/login" component={Login}/>
+              <Route component={NotFound}/>
+            </Switch>
+          </ContentContainer>
+          <Footer nav={nav} />
         </div>
       );
     }

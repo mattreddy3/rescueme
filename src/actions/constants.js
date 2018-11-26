@@ -13,9 +13,9 @@ export const ASSIGN_ = 'ASSIGN_'
 export const UNASSIGN_ = 'UNASSIGN_'
 export const GET_MOCK_ = 'GET_MOCK_'
 
-// Data types 
-export const ANIMALS = 'ANIMALS' // 
-export const SHELTERS = 'SHELTERS' // 
+// Data types
+export const ANIMALS = 'ANIMALS' //
+export const SHELTERS = 'SHELTERS' //
 export const dataTypes = {
 	ANIMALS,
 	SHELTERS
@@ -27,6 +27,7 @@ export const _LOADING_FAILED = '_LOADING_FAILED'
 export const _LOADED = '_LOADED'
 export const _SAVING = '_SAVING'
 export const _SAVED = '_SAVED'
+export const _DETAIL_OPTIONS = '_DETAIL_OPTIONS'
 
 // UI actions
 export const TOGGLE_SIDENAV = 'TOGGLE_SIDENAV'
